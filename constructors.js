@@ -101,11 +101,7 @@ function Car(make, model, year){
     this.name = name
     this.age = age
     this.email = email
-    this.savedPosts = [{
-      id: 123,
-      title: 'title',
-      rating: 1
-    }]
+    this.savedPosts = savedPosts
   }
 
   User.prototype.addSavedPost = function(id, title, rating){
@@ -131,10 +127,10 @@ function Car(make, model, year){
   // Write a prototype method for the User constructor function named changePostRating that will take in two number parameters. The first will be an id (a number) and the second will be the new rating (a number).
   // Use the id to find the matching object in the savedPosts array. Once you find the matching object, update it's rating score with the new rating parameter.
   
-  User.prototype.changePostRating(id, rating){
+  User.prototype.changePostRating = function(id, newRating){
     for(i = 0 ; i < this.savedPosts.length ; i++){
-      if(this.savedPosts[i] === id){
-        return this.savedPosts[i] = rating
+      if(this.savedPosts[i].id === id){
+        this.savedPosts[i].rating = newRating
       }
     }
   }
